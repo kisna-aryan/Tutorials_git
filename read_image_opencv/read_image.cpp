@@ -9,7 +9,7 @@ using namespace std;
 using namespace cv;
 
 int main(int argc, const char** argv) {
-    Mat img = imread("/media/darthvader/data/CUDA/CUDA_git/Tutorials_git/read_image_opencv/images/frameIndex_0.png");
+    Mat img = imread("images/frameIndex_0.png");
     if (img.empty()) {
         cout << "Error: Image cannot be loaded." << endl;
         system("pause");
