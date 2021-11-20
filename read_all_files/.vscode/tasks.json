@@ -18,6 +18,8 @@
                 "-l", "opencv_highgui",
 				"-l", "opencv_imgproc ",
 				"-lopencv_imgcodecs",
+				"-lboost_filesystem",
+				"-lboost_system",
 				"-o",
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],
