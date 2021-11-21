@@ -84,7 +84,7 @@ int main(int argc, char** argv)
     //! [Display]
     imshow("Source image", src );
     imshow("calcHist Demo", histImage );
-    waitKey();
+    waitKey(0);
     //! [Display]
 
     return EXIT_SUCCESS;
