@@ -4,13 +4,11 @@
             "name": "Linux",
             "includePath": [
                 "${workspaceFolder}/**",
-                "/usr/include/opencv4/",
-                "/usr/local/lib"
-
+                "/usr/local/include/opencv4"
             ],
             "defines": [],
-            "compilerPath": "/usr/local/cuda/bin/nvcc",
-            "cStandard": "gnu17",
+            "compilerPath": "/usr/bin/g++",
+            "cStandard": "gnu11",
             "cppStandard": "gnu++14",
             "intelliSenseMode": "linux-gcc-x64"
         }
