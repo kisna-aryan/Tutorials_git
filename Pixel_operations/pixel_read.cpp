@@ -18,7 +18,7 @@ int main()
         for (int i=0;i<image.cols;i++)
         {
             if( i== j)   
-                image.at<uchar>(j,i) = 255; //white
+                image.at<u_int16_t>(j,i) = 65530; //white
         }
     }
     //After changing
