@@ -6,6 +6,8 @@ using namespace std;
 using namespace cv;
 
 #define NoOfBins 65536
+#define maxThresold 10
+#define minThersold 10
  
 int main()
 {
@@ -63,19 +65,49 @@ int main()
  
     Mat histImage(hist_h, hist_w, CV_8UC1, Scalar(255, 255, 255));
  
+     // find the maximum intensity element from histogram
+    int hist_max = histogram[0];
+    for(int i = 1; i < NoOfBins; i++){
+        if(hist_max < histogram[i]){
+            hist_max = histogram[i];
+        }
+    }
     // find the maximum intensity element from histogram
     int max = histogram[NoOfBins-1];
-    for(int i = NoOfBins; i > 1; i--){
-        if(max < histogram[i]){
-            max = histogram[i];
+    for(int i = NoOfBins-2; i > 1; i--){
+        if(maxThresold < histogram[i]){
+            max = i;
+            break;
         }
     }
 
     // find the minimum intensity element from histogram
     int min = histogram[1];
     for(int i = 2; i < NoOfBins; i++){
-        if(min < histogram[i]){
-            min = histogram[i];
+        if(minThersold < histogram[i]){
+            min = i;
+            break;
+        }
+    }
+
+    
+    // convert image into 8 bit
+    // calculate the no of pixels for each intensity values
+    float new_pixel;
+    for(int y = 0; y < image.rows; y++)
+    {
+        for(int x = 0; x < image.cols; x++)
+        {
+            new_pixel = (image.at<u_int16_t>(y,x) - min)/float(max-min);
+            if(new_pixel > 1)
+            {
+                new_pixel = 1;
+            }
+            else if(new_pixel < 0)
+            {
+                new_pixel = 0;
+            }
+            proc_image.at<uchar>(y,x) = (unsigned char)(new_pixel*255);
         }
     }
  
@@ -84,7 +116,7 @@ int main()
     // normalize the histogram between 0 and histImage.rows
  
     for(int i = 0; i < NoOfBins; i++){
-        histogram[i] = ((double)histogram[i]/max)*histImage.rows;
+        histogram[i] = ((double)histogram[i]/hist_max)*histImage.rows;
     }
  
  
@@ -103,7 +135,7 @@ int main()
     imshow("Intensity Histogram", histImage);
  
     namedWindow("Image");
-    imshow("Image", image_1);
+    imshow("Image", proc_image);
     waitKey();
     return 0;
 }
