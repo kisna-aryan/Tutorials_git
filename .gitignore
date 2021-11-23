@@ -9,3 +9,5 @@ process_img/min_max_LUT
 process_img/min_max_LUT_video
 process_img/HE_LUT
 
+.gitignore
+process_img/HE_LUT_video
