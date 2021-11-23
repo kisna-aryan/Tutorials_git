@@ -3,3 +3,9 @@ read_image_opencv/read_image
 read_image_opencv/.fuse_hidden00002e1a00000001
 cuda_opencv_hello/src/main
 plot_histogram/plot_hist
+
+process_img/min_max
+process_img/min_max_LUT
+process_img/min_max_LUT_video
+process_img/HE_LUT
+
