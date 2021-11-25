@@ -11,3 +11,4 @@ process_img/HE_LUT
 
 .gitignore
 process_img/HE_LUT_video
+CLAHE/HE_min_max
