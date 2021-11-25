@@ -9,7 +9,7 @@ using namespace cv;
 #define maxThresold 50
 #define minThersold 50
 #define TotalNoOfPixels 76800
-#define ClipLimit   0.001
+#define ClipLimit   0.0001
 #define NoOfclipPixels  76800*ClipLimit
  
 int main()
@@ -60,19 +60,19 @@ int main()
         }
     }
 
-    int clipedPixels,perBindistribution;
+    // int clipedPixels,perBindistribution;
     for(int i = 0; i < NoOfBins; i++){
         if(NoOfclipPixels < histogram[i]){
-            clipedPixels += histogram[i] - NoOfclipPixels;
+            // clipedPixels += histogram[i] - NoOfclipPixels;
             histogram[i] = NoOfclipPixels;
         }
     }
-    perBindistribution = clipedPixels/NoOfBins;
+    // perBindistribution = clipedPixels/NoOfBins;
     
     int TotalPixelsAfterDistr = 0;
     for(int i = 0; i < NoOfBins; i++)
     {
-        histogram[i] += perBindistribution; 
+        // histogram[i] += perBindistribution; 
         TotalPixelsAfterDistr += histogram[i];     
     }
   
