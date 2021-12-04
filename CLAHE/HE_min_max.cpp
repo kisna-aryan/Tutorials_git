@@ -9,7 +9,7 @@ using namespace cv;
 #define maxThresold 50
 #define minThersold 50
 #define TotalNoOfPixels 76800
-#define ClipLimit   0.0001
+#define ClipLimit   0.09
 #define NoOfclipPixels  76800*ClipLimit
  
 int main()
